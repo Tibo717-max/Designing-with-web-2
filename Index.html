@@ -1,22 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset=""UTF-8">
-        <meta name=""viewport" content=""width=device-width, initial-s>
-        <title>Document</title>
-        <!-- a comment -->
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
 
-        <h1>hello world</h1>
-        <h2 class="red"> title 2</h2>
-        <h3> title 3</h3>
-        <h4> title 4</h4>
-        <h5>title 5</h5>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thibault Hazotte — Portfolio</title>
 
-        <p> paragraphe </p>
-        <img src="https://www.outsideonline.com/wp-content/uploads/2023/03/Funny_Dog_S.jpg" alt="image of a cute dog">
+  <!--
+    USAGE IA— Import des polices Google Fonts :
+    Je ne savais pas comment utiliser des polices personnalisées en HTML.
+    L'IA m'a expliqué qu'on utilise une balise <link> dans le <head>
+    pour charger des polices depuis Google Fonts, ce qui m'a permis
+    d'utiliser Playfair Display et Inter comme dans mon design Figma.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
 
-    </body>
+  <style>
+
+    /* RESET : supprime les marges par défaut du navigateur */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Palette de couleurs du design Figma :
+       Blanc      #FFFFFF
+       Noir       #111111
+       Gris clair #F5F5F5
+       Doré       #C8A96E  */
+
+    /* Style général de la page */
+    body {
+      background-color: #FFFFFF;
+      color: #111111;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* NAVBAR : barre de navigation en haut */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+    }
+
+    /* Logo TH avec fond doré */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #111111;
+      background-color: #C8A96E;
+      padding: 8px 20px;
+    }
+
+    /* Conteneur des liens de navigation */
+    .nav-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Liens About et Projects avec fond doré */
+    .nav-links a {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #111111;
+      background-color: #C8A96E;
+      padding: 8px 20px;
+    }
+
+    /* HERO : section centrale de la page */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 100px 40px;
+      min-height: 80vh;
+    }
+
+    /* Grand titre */
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    /* Sous-titre */
+    .hero p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #555555;
+      margin-bottom: 48px;
+    }
+
+    /* Bouton See my work */
+    .btn {
+      display: inline-block;
+      background-color: #111111;
+      color: #FFFFFF;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 16px 48px;
+    }
+
+    /*
+      USAGE IA— Effet au survol du bouton (:hover) :
+      Je ne connaissais pas la pseudo-classe CSS :hover.
+      L'IA m'a expliqué son fonctionnement : elle permet de changer
+      le style d'un élément quand la souris passe dessus,
+      ce qui rend le site plus interactif sans JavaScript.
+    */
+    .btn:hover {
+      background-color: #C8A96E;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Barre de navigation -->
+  <nav>
+    <a href="index.html" class="logo">TH</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="about.html">Projects</a>
+    </div>
+  </nav>
+
+  <!-- Section principale avec nom, sous-titre et bouton -->
+  <section class="hero">
+    <h1>Thibault<br>Hazotte</h1>
+    <p>Business Student @ EM Lyon</p>
+    <a href="about.html" class="btn">See my work</a>
+  </section>
+
+</body>
 </html>
