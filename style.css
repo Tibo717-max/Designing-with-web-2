@@ -8,9 +8,10 @@
    Polices : Playfair Display + Inter
    ============================================= */
 
-/* RESET */
+/* RESET : supprime les marges par défaut du navigateur */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Défilement fluide entre les sections */
 html { scroll-behavior: smooth; }
 
 body {
@@ -24,6 +25,14 @@ body {
    NAVBAR
    ============================================= */
 
+/*
+  USAGE IA — Navbar fixe avec ombre au scroll :
+  Je voulais que la navbar reste visible en permanence.
+  L'IA m'a expliqué "position: fixed" qui détache l'élément
+  du flux de la page et le bloque en haut de l'écran.
+  "z-index: 100" le fait passer au-dessus de tout le contenu.
+  JavaScript ajoute la classe "scrolled" pour l'ombre.
+*/
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -36,12 +45,6 @@ nav {
   transition: box-shadow 0.3s;
 }
 
-/*
-  USAGE IA — Navbar fixe avec ombre au scroll :
-  "position: fixed" bloque la navbar en haut.
-  "z-index: 100" la fait passer au-dessus du contenu.
-  JavaScript ajoute "scrolled" qui déclenche l'ombre.
-*/
 nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
 
 .logo {
@@ -108,6 +111,7 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
 }
 .hero h1.visible { opacity: 1; transform: translateY(0); }
 
+/* Mot en italique et doré dans le titre */
 .italic { font-style: italic; color: #C8A96E; }
 
 .subtitle {
@@ -230,8 +234,10 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
 
 /*
   USAGE IA — CSS Grid avec auto-fill :
-  "repeat(auto-fill, minmax(150px, 1fr))" crée automatiquement
-  autant de colonnes que possible selon la place disponible.
+  Je voulais que les tags s'organisent automatiquement en colonnes.
+  L'IA m'a montré "repeat(auto-fill, minmax(150px, 1fr))" qui crée
+  autant de colonnes que possible selon la place disponible,
+  chacune d'au moins 150px.
 */
 .skills-grid {
   display: grid;
@@ -311,6 +317,7 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
   margin-bottom: 14px;
 }
 
+/* Texte caché par défaut, affiché quand la classe "open" est ajoutée par JS */
 .project-detail {
   display: none;
   font-size: 0.9rem;
@@ -332,20 +339,15 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
 .people-section { padding: 80px; }
 
 .people-description {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  color: #666;
+  color: #888;
   margin-top: -20px;
   margin-bottom: 48px;
   line-height: 1.8;
 }
 
-/*
-  USAGE IA — Grille dynamique pour les cartes personnes :
-  Cette grille reçoit des cartes créées par JavaScript.
-  "auto-fill" permet d'adapter le nombre de colonnes automatiquement
-  selon la quantité de données reçues du JSON.
-*/
+/* Grille qui reçoit les cartes générées par JavaScript */
 .people-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -377,24 +379,10 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
   font-weight: 400;
   margin-bottom: 6px;
 }
-.people-role {
-  font-size: 0.8rem;
-  color: #888;
-  font-weight: 300;
-  margin-bottom: 4px;
-}
-.people-info {
-  font-size: 0.75rem;
-  color: #aaa;
-  font-weight: 300;
-}
+.people-role { font-size: 0.8rem; color: #888; font-weight: 300; margin-bottom: 4px; }
+.people-info { font-size: 0.75rem; color: #aaa; font-weight: 300; }
 
-.loading-text {
-  color: #aaa;
-  font-size: 0.9rem;
-  font-weight: 300;
-  font-style: italic;
-}
+.loading-text { color: #aaa; font-size: 0.9rem; font-style: italic; }
 
 
 /* =============================================

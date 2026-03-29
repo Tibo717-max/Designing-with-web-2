@@ -18,6 +18,7 @@
   -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+  <!-- Lien vers notre fichier CSS externe -->
   <link rel="stylesheet" href="style.css"/>
 </head>
 
@@ -114,6 +115,7 @@
       </div>
 
       <p class="skills-title" style="margin-top: 32px;">Parcours</p>
+
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
@@ -213,20 +215,18 @@
     <p class="section-tag">03 — Network</p>
     <h2 class="section-title">Mon réseau</h2>
     <p class="people-description">
-      Personnes avec lesquelles j'ai eu l'occasion de collaborer ou d'échanger.
-      <br><small style="color:#999">Données chargées dynamiquement depuis un fichier JSON.</small>
+      Données chargées dynamiquement depuis un fichier JSON externe.
     </p>
 
     <!--
-      USAGE IA — Affichage dynamique depuis un JSON :
-      Ce conteneur est rempli automatiquement par JavaScript.
-      Je ne savais pas comment créer des éléments HTML depuis du code JS.
-      L'IA m'a expliqué document.createElement(), innerHTML et appendChild()
-      qui permettent de générer du HTML dynamiquement à partir de données JSON.
+      USAGE IA — Contenu généré dynamiquement par JavaScript :
+      Ce conteneur est rempli automatiquement par script.js.
+      Je ne savais pas créer des éléments HTML depuis du code JS.
+      L'IA m'a expliqué createElement(), innerHTML et appendChild()
+      qui permettent de générer du HTML à partir de données JSON.
       C'est le principe fondamental du web dynamique.
     -->
     <div id="people-grid" class="people-grid">
-      <!-- Les cartes sont générées automatiquement par script.js -->
       <p class="loading-text">Chargement des données...</p>
     </div>
 
@@ -284,7 +284,11 @@
     </a>
   </footer>
 
-  <!-- Fichier JavaScript séparé -->
+  <!--
+    Liaison avec le fichier JavaScript externe.
+    Placé en bas de page pour que tout le HTML soit chargé
+    avant que le script ne s'exécute.
+  -->
   <script src="script.js"></script>
 
 </body>
