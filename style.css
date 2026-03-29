@@ -5,21 +5,13 @@
      Noir       #111111
      Gris clair #F5F5F5
      Doré       #C8A96E
-   Polices : Playfair Display (titres) + Inter (texte)
+   Polices : Playfair Display + Inter
    ============================================= */
 
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ---- RESET : supprime les marges par défaut ---- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Défilement fluide entre les sections (liens ancres) */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: #FFFFFF;
@@ -33,11 +25,9 @@ body {
    ============================================= */
 
 nav {
-  position: fixed;             /* reste en haut en permanence */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;                /* passe au-dessus de tout le contenu */
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,19 +37,13 @@ nav {
 }
 
 /*
-  USAGE de l'IA — Navbar fixe avec effet au scroll :
-  Je voulais que la navbar reste visible et change d'aspect quand
-  on fait défiler la page. L'IA m'a expliqué :
-  - "position: fixed" bloque l'élément en haut de l'écran
-  - "z-index: 100" fait passer la navbar au-dessus du contenu
-  - JavaScript ajoute la classe "scrolled" au scroll,
-    qui déclenche l'ombre ci-dessous
+  USAGE IA — Navbar fixe avec ombre au scroll :
+  "position: fixed" bloque la navbar en haut.
+  "z-index: 100" la fait passer au-dessus du contenu.
+  JavaScript ajoute "scrolled" qui déclenche l'ombre.
 */
-nav.scrolled {
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-}
+nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
 
-/* Logo TH avec fond doré */
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
@@ -70,20 +54,12 @@ nav.scrolled {
   padding: 10px 22px;
   transition: background-color 0.2s;
 }
+.logo:hover { background-color: #b8954f; }
 
-.logo:hover {
-  background-color: #b8954f;
-}
-
-/* Liens de navigation */
-.nav-links {
-  display: flex;
-  gap: 36px;
-}
+.nav-links { display: flex; gap: 32px; }
 
 .nav-links a {
   font-size: 0.85rem;
-  font-weight: 400;
   text-decoration: none;
   color: #111111;
   letter-spacing: 0.08em;
@@ -92,11 +68,7 @@ nav.scrolled {
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s, color 0.2s;
 }
-
-.nav-links a:hover {
-  border-color: #C8A96E;
-  color: #C8A96E;
-}
+.nav-links a:hover { border-color: #C8A96E; color: #C8A96E; }
 
 
 /* =============================================
@@ -105,99 +77,65 @@ nav.scrolled {
 
 .hero {
   display: flex;
-  flex-direction: column;   /* empile les éléments verticalement */
-  align-items: center;      /* centre horizontalement */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 100vh;        /* occupe tout l'écran */
+  min-height: 100vh;
   padding: 120px 40px 60px;
 }
 
-/* Tag "Portfolio — 2025" */
 .hero-tag {
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #999999;
+  color: #999;
   margin-bottom: 28px;
-
-  /* Invisible au départ, animation déclenchée par JavaScript */
   opacity: 0;
   transition: opacity 0.8s ease;
 }
+.hero-tag.visible { opacity: 1; }
 
-.hero-tag.visible {
-  opacity: 1;
-}
-
-/* Grand titre principal */
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(4rem, 8vw, 7rem); /* s'adapte à la taille de l'écran */
+  font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 400;
   line-height: 1.0;
   margin-bottom: 32px;
-
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
+.hero h1.visible { opacity: 1; transform: translateY(0); }
 
-.hero h1.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.italic { font-style: italic; color: #C8A96E; }
 
-/* Mot en italique et doré dans le titre */
-.italic {
-  font-style: italic;
-  color: #C8A96E;
-}
-
-/* Sous-titre */
 .subtitle {
   font-size: 1rem;
   font-weight: 300;
-  color: #777777;
-  letter-spacing: 0.04em;
+  color: #777;
   margin-bottom: 52px;
-
   opacity: 0;
   transition: opacity 0.8s ease;
 }
+.subtitle.visible { opacity: 1; }
 
-.subtitle.visible {
-  opacity: 1;
-}
-
-/* Bouton "See my work" */
 .btn {
   display: inline-block;
   background-color: #111111;
   color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
   text-decoration: none;
   padding: 18px 52px;
-
   opacity: 0;
   transition: opacity 0.8s ease, background-color 0.3s, transform 0.2s;
 }
-
-.btn.visible {
-  opacity: 1;
-}
-
-.btn:hover {
-  background-color: #C8A96E;
-  transform: translateY(-2px);
-}
+.btn.visible { opacity: 1; }
+.btn:hover { background-color: #C8A96E; transform: translateY(-2px); }
 
 
 /* =============================================
-   SECTION STATS (chiffres clés)
+   STATS
    ============================================= */
 
 .stats {
@@ -205,8 +143,8 @@ nav.scrolled {
   justify-content: center;
   align-items: center;
   padding: 48px 60px;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .stat-item {
@@ -220,23 +158,16 @@ nav.scrolled {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
   font-weight: 400;
-  color: #111111;
 }
 
 .stat-label {
   font-size: 0.78rem;
   font-weight: 300;
-  color: #888888;
-  letter-spacing: 0.05em;
+  color: #888;
   margin-top: 4px;
 }
 
-/* Séparateur vertical entre les stats */
-.stat-divider {
-  width: 1px;
-  height: 48px;
-  background-color: #dddddd;
-}
+.stat-divider { width: 1px; height: 48px; background-color: #ddd; }
 
 
 /* =============================================
@@ -245,13 +176,12 @@ nav.scrolled {
 
 .about-section {
   display: grid;
-  grid-template-columns: 1fr 1.6fr; /* colonne gauche + large colonne droite */
+  grid-template-columns: 1fr 1.6fr;
   gap: 80px;
   padding: 100px 80px;
   align-items: start;
 }
 
-/* Tag de section : "01 — About me" */
 .section-tag {
   font-size: 0.75rem;
   letter-spacing: 0.18em;
@@ -261,7 +191,6 @@ nav.scrolled {
   margin-bottom: 14px;
 }
 
-/* Titre de section */
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 3.2rem;
@@ -270,54 +199,39 @@ nav.scrolled {
   margin-bottom: 40px;
 }
 
-/* Rectangle gris placeholder pour la photo */
 .photo-placeholder {
   width: 100%;
   max-width: 260px;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3/4;
   background-color: #F5F5F5;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
 }
+.photo-icon { font-size: 3.5rem; color: #ccc; }
 
-.photo-icon {
-  font-size: 3.5rem;
-  color: #cccccc;
-}
-
-/* Paragraphes de la bio */
 .about-text {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.9;
-  color: #444444;
+  color: #444;
   margin-bottom: 24px;
 }
+.about-text strong { font-weight: 500; color: #111; }
 
-.about-text strong {
-  font-weight: 500;
-  color: #111111;
-}
-
-/* Titre des blocs compétences / parcours */
 .skills-title {
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #999999;
+  color: #999;
   font-weight: 500;
   margin-bottom: 14px;
 }
 
 /*
-  USAGE de l'IA — CSS Grid avec auto-fill pour les compétences :
-  Je voulais que les tags de compétences s'organisent automatiquement
-  en plusieurs colonnes selon la place disponible. L'IA m'a montré
-  "grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))"
-  qui crée autant de colonnes que possible, chacune d'au moins 150px.
-  Sans cette syntaxe je n'aurais pas su faire une grille automatique.
+  USAGE IA — CSS Grid avec auto-fill :
+  "repeat(auto-fill, minmax(150px, 1fr))" crée automatiquement
+  autant de colonnes que possible selon la place disponible.
 */
 .skills-grid {
   display: grid;
@@ -330,12 +244,9 @@ nav.scrolled {
   background-color: #F5F5F5;
   padding: 10px 14px;
   font-size: 0.83rem;
-  font-weight: 400;
-  color: #333333;
   text-align: center;
 }
 
-/* Timeline du parcours */
 .timeline-item {
   display: flex;
   align-items: flex-start;
@@ -344,45 +255,23 @@ nav.scrolled {
   padding-bottom: 18px;
   border-bottom: 1px solid #f0f0f0;
 }
-
 .timeline-dot {
-  width: 8px;
-  height: 8px;
-  min-width: 8px;
+  width: 8px; height: 8px; min-width: 8px;
   background-color: #C8A96E;
   border-radius: 50%;
   margin-top: 5px;
 }
-
-.timeline-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.timeline-date {
-  font-size: 0.78rem;
-  color: #999999;
-  font-weight: 300;
-}
-
-.timeline-role {
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #111111;
-}
+.timeline-content { display: flex; flex-direction: column; gap: 4px; }
+.timeline-date { font-size: 0.78rem; color: #999; font-weight: 300; }
+.timeline-role { font-size: 0.95rem; }
 
 
 /* =============================================
    SECTION PROJECTS
    ============================================= */
 
-.projects-section {
-  padding: 80px;
-  background-color: #FAFAFA;
-}
+.projects-section { padding: 80px; background-color: #FAFAFA; }
 
-/* Grille 2 colonnes pour les cartes */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -390,19 +279,14 @@ nav.scrolled {
   margin-top: 48px;
 }
 
-/* Carte projet */
 .project-card {
   background-color: #FFFFFF;
-  border: 1px solid #eeeeee;
+  border: 1px solid #eee;
   padding: 32px;
   cursor: pointer;
   transition: box-shadow 0.2s, transform 0.2s;
 }
-
-.project-card:hover {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-  transform: translateY(-2px);
-}
+.project-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
 
 .project-card-header {
   display: flex;
@@ -410,17 +294,8 @@ nav.scrolled {
   align-items: center;
   margin-bottom: 14px;
 }
-
-.project-icon {
-  font-size: 1.3rem;
-  color: #C8A96E;
-}
-
-.project-year {
-  font-size: 0.75rem;
-  color: #aaaaaa;
-  font-weight: 300;
-}
+.project-icon { font-size: 1.3rem; color: #C8A96E; }
+.project-year { font-size: 0.75rem; color: #aaa; font-weight: 300; }
 
 .project-title {
   font-family: 'Playfair Display', serif;
@@ -428,35 +303,97 @@ nav.scrolled {
   font-weight: 400;
   margin-bottom: 6px;
 }
-
 .project-subtitle {
   font-size: 0.78rem;
-  color: #999999;
+  color: #999;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 14px;
 }
 
-/* Texte caché par défaut */
 .project-detail {
   display: none;
   font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.7;
-  color: #555555;
+  color: #555;
   padding-top: 14px;
   margin-bottom: 14px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
+}
+.project-card.open .project-detail { display: block; }
+.project-toggle { font-size: 0.8rem; color: #C8A96E; }
+
+
+/* =============================================
+   SECTION PEOPLE (données JSON dynamiques)
+   ============================================= */
+
+.people-section { padding: 80px; }
+
+.people-description {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #666;
+  margin-top: -20px;
+  margin-bottom: 48px;
+  line-height: 1.8;
 }
 
-/* Le texte s'affiche quand la classe "open" est ajoutée par JavaScript */
-.project-card.open .project-detail {
-  display: block;
+/*
+  USAGE IA — Grille dynamique pour les cartes personnes :
+  Cette grille reçoit des cartes créées par JavaScript.
+  "auto-fill" permet d'adapter le nombre de colonnes automatiquement
+  selon la quantité de données reçues du JSON.
+*/
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-.project-toggle {
+.people-card {
+  background-color: #F5F5F5;
+  padding: 28px 20px;
+  text-align: center;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.people-card:hover { background-color: #eeeeee; transform: translateY(-2px); }
+
+.people-avatar {
+  width: 60px; height: 60px;
+  background-color: #C8A96E;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.people-avatar i { font-size: 1.4rem; color: #FFFFFF; }
+
+.people-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.people-role {
   font-size: 0.8rem;
-  color: #C8A96E;
+  color: #888;
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+.people-info {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.loading-text {
+  color: #aaa;
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-style: italic;
 }
 
 
@@ -464,11 +401,8 @@ nav.scrolled {
    SECTION CONTACT
    ============================================= */
 
-.contact-section {
-  padding: 80px;
-}
+.contact-section { padding: 80px; background-color: #FAFAFA; }
 
-/* Grille 2 colonnes pour les cartes de contact */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -476,40 +410,22 @@ nav.scrolled {
   margin-top: 48px;
 }
 
-/* Carte de contact */
 .contact-card {
   display: flex;
   align-items: center;
   gap: 22px;
-  background-color: #F5F5F5;
+  background-color: #FFFFFF;
   padding: 28px 30px;
   text-decoration: none;
   color: #111111;
+  border: 1px solid #eee;
   transition: background-color 0.2s;
 }
+.contact-card:hover { background-color: #F5F5F5; }
 
-.contact-card:hover {
-  background-color: #ebebeb;
-}
-
-.contact-icon {
-  font-size: 1.4rem;
-  color: #C8A96E;
-  min-width: 22px;
-}
-
-.contact-label {
-  font-size: 0.72rem;
-  color: #999999;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.contact-value {
-  font-size: 0.92rem;
-  font-weight: 400;
-}
+.contact-icon { font-size: 1.4rem; color: #C8A96E; min-width: 22px; }
+.contact-label { font-size: 0.72rem; color: #999; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.contact-value { font-size: 0.92rem; }
 
 
 /* =============================================
@@ -521,9 +437,9 @@ nav.scrolled {
   justify-content: space-between;
   align-items: center;
   padding: 28px 80px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
   font-size: 0.8rem;
-  color: #aaaaaa;
+  color: #aaa;
   font-weight: 300;
 }
 
@@ -533,7 +449,4 @@ nav.scrolled {
   font-size: 0.85rem;
   transition: color 0.2s;
 }
-
-.footer-back:hover {
-  color: #b8954f;
-}
+.footer-back:hover { color: #b8954f; }
